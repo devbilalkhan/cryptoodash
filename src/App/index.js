@@ -1,11 +1,12 @@
 import './App.css';
-
+import AppLayout from './AppLayout'
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-		  welcome to cryptodash
-      </header>
+		<AppLayout>
+		  <h1>Welcome to Cryptodash</h1>
+		</AppLayout>
+
     </div>
   );
 }
