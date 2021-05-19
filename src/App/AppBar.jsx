@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { AppContext } from "./AppProvider";
+import { AppConsumer } from "./AppProvider";
 
 const Logo = styled.div`
   font-size: 1.5em;
@@ -14,13 +14,17 @@ const Logo = styled.div`
 const Bar = styled.div`
   display: grid;
   margin-bottom: 50px;
-  padding: 0.5em;
+  padding: 0.5em 0;
   grid-template-columns: 180px auto 100px 100px;
 `;
 
+const Flex = styled.div`
+  display: flex;
+  align-items: center;
+`;
 const ControlButtonElem = styled.div`
   cursor: pointer;
-
+  text-align: center;
   &:hover {
     color: #666876;
   }
@@ -37,17 +41,22 @@ const toProperCase = (lower) => {
 
 const ControlButton = ({ name }) => {
   return (
-    <AppContext.Consumer>
+    <AppConsumer>
       {({ page, setPage }) => (
-        <ControlButtonElem
-          active={page === name}
-          onClick={() => setPage(name)}
-          hover={page === name}
-        >
-          {toProperCase(name)}
-        </ControlButtonElem>
+        <>
+          <ControlButtonElem
+            active={page.defaultPage === name}
+            onClick={() => {
+              setPage({ ...page, defaultPage: name, firstVisit: false });
+              localStorage.setItem("defaultPage", name);
+            }}
+            hover={page.defaultPage === name}
+          >
+            {toProperCase(name)}
+          </ControlButtonElem>
+        </>
       )}
-    </AppContext.Consumer>
+    </AppConsumer>
   );
 };
 
@@ -56,8 +65,12 @@ const AppBar = () => {
     <Bar>
       <Logo>Cryptodash</Logo>
       <div />
-      <ControlButton name="dasboard" />
-      <ControlButton name="settings" />
+      <Flex>
+        <ControlButton name="dashboard" />
+      </Flex>
+      <Flex>
+        <ControlButton name="settings" />
+      </Flex>
     </Bar>
   );
 };

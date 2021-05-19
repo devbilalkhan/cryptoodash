@@ -1,19 +1,22 @@
-import './App.css';
-import AppLayout from './AppLayout'
-import AppBar from './AppBar'
-import AppProvider from './AppProvider';
-function App() {
-	return (
-		<div className="App">
-			<AppLayout>
-				<AppProvider>
-					<AppBar />
-					<h1>Welcome to Cryptodash</h1>
-				</AppProvider>
-			</AppLayout>
+import "./App.css";
+import AppLayout from "./AppLayout";
+import AppBar from "./AppBar";
+import AppProvider from "./AppProvider";
+import Message from "./Message";
+import React from "react";
+// import styled from "styled-components";
 
-		</div>
-	);
+function App() {
+  return (
+    <div className="App">
+      <AppLayout>
+        <AppProvider>
+          <AppBar />
+          <Message />
+        </AppProvider>
+      </AppLayout>
+    </div>
+  );
 }
 
 export default App;
