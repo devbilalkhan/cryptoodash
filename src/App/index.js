@@ -1,9 +1,11 @@
 import "./App.css";
 import AppLayout from "./AppLayout";
 import AppBar from "./AppBar";
-import AppProvider from "./AppProvider";
-import Message from "./Message";
+import AppProvider from "../context/AppProvider";
+import Message from "../components/Message";
 import React from "react";
+import Content from "../components/Content";
+import CoinGrid from "../components/CoinGrid";
 // import styled from "styled-components";
 
 function App() {
@@ -12,7 +14,10 @@ function App() {
       <AppLayout>
         <AppProvider>
           <AppBar />
-          <Message />
+          <Content>
+            <Message />
+          </Content>
+          <CoinGrid />
         </AppProvider>
       </AppLayout>
     </div>
