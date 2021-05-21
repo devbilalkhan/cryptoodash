@@ -1,13 +1,14 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { AppConsumer } from "../context/AppProvider";
+import { hoverBg, hoverLink } from "../styles/styles";
 
 const Logo = styled.div`
   font-size: 1.5em;
   font-weight: bold;
-  background: #32333a;
+  background: ${hoverBg};
   border-radius: 5px;
-  padding: 0.5em;
+  padding: 0.6em 2rem;
   color: aqua;
 `;
 
@@ -15,7 +16,7 @@ const Bar = styled.div`
   display: grid;
   margin-bottom: 50px;
   padding: 0.5em 0;
-  grid-template-columns: 180px auto 100px 100px;
+  grid-template-columns: 220px auto 100px 100px;
 `;
 
 const Flex = styled.div`
@@ -26,7 +27,7 @@ const ControlButtonElem = styled.div`
   cursor: pointer;
   text-align: center;
   &:hover {
-    color: #666876;
+    color: ${hoverLink};
   }
   ${(props) =>
     props.active &&
